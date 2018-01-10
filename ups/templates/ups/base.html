@@ -1,0 +1,23 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>UpsDB</title>
+       <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'> -->
+        <link rel="stylesheet" href="{% static 'ups/css/base.css' %}">
+	<script src="{% static 'ups/js/base.js' %}"></script>
+    </head>
+    <body>
+        <div class="page-header">
+            <h1>OBIT UPS</h1>
+        </div>
+	<div class="mainmenu">
+	    <a href="/" class="mlink">UPSList |</a>
+	    <a href="/battery" class="mlink">| BatteryList </a>
+	</div>
+            {% block content %}
+            {% endblock %}
+    </body>
+</html>
+

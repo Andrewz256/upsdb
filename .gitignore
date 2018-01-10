@@ -1,0 +1,8 @@
+db.sqlite3
+*.swp
+*.log
+.__*
+__pycache__/
+*.py[cod]
+*.pyc
+

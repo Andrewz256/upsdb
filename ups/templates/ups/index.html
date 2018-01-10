@@ -1,0 +1,65 @@
+{% extends 'ups/base.html' %}
+
+{% block content %}
+
+<div class="tablediv">
+    <div class="searchdiv">
+    <form action="/search" method="get">
+        <input type="text" name="q">
+        <input type="submit" value="Search">
+    </form>
+    </div>
+    <div class="adddiv">
+    <form action="/new">
+      <input type="submit" value="add">
+    </form>
+     
+<!--      <input type="submit" value="add" onclick="window.open('{% url 'ups:upsnew' %}','newups','top=15, left=20, width=600, height=800')"> -->
+    
+    </div>
+{% if UPS_battery_list %}
+<table>
+	<tr>
+	  <th>edits</th>
+	  <th>OBIT##</th>
+	  <th>model</th>
+	  <th>removeBAT_1</th>
+	  <th>removeBAT_2</th>
+	  <th>insertBAT_1</th>
+	  <th>insertBAT_2</th>
+	  <th>R</th>
+	  <th>state</th>
+	  <th>date</th>
+	  <th>Comment</th>
+	</tr>
+	{% for ups in UPS_battery_list  %}
+ 	<tr>
+	  <td><a href="{% url 'ups:ups_edit' id_s=ups.id %}" class="tlink">e</a>,
+	      <a href="{% url 'ups:ups_remove' id_s=ups.id %}" onclick="return confirm('Delete {{ ups.obitN }}?')" class="tlink">d</a></td>
+	  <td><a>{{ ups.obitN }}</a></td>
+	  <td><a>{{ ups.modUps_id }}</a></td>
+          <td><a>{{ ups.obitOutBat1 }}</a></td>
+	  <td><a>{{ ups.obitOutBat2 }}</a></td>
+	  <td><a>{{ ups.obitInsBat1 }}</a></td>
+	  <td><a>{{ ups.obitInsBat2 }}</a></td>
+	  <td><a>{{ ups.released }}</a></td>
+	  <td><a>{{ ups.state }}</a></td>
+	  <td><a>{{ ups.dateU|date:"d.m.o H:i"}}</a></td>
+	  <td><a>{{ ups.commentU }}</a></td>
+	</tr>
+	{% endfor %}
+</table>
+    {% else %}
+        <p style="font-weight: bold">--- list is empty ---</p>
+    {% endif %}
+    {% if error %}
+
+            <p style="color: red">ERROR: {{ error }}</p>
+
+    {% endif %}
+
+</div>
+{% endblock %}
+
+ 
+

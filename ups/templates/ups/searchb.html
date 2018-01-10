@@ -1,0 +1,40 @@
+{% extends 'ups/base.html' %}
+
+{% block content %}
+
+
+
+<head>
+    <title>Search</title>
+</head>
+<div class="tablediv">
+<p>You searched for: <strong>{{ query }}</strong></p>
+{% if search_battery_list %}
+    <p>Found {{ search_battery_list|length }} Battery{{ search_battery_list|pluralize }}.</p>
+    <table>
+        <tr>
+          <th>OBIT##</th>
+          <th>model</th>
+          <th>state</th>
+          <th>date</th>
+          <th>comment</th>
+        </tr>
+
+        {% for battery in search_battery_list  %}
+        <tr>
+          <td><a href="{% url 'ups:bat_edit' id_s=battery.obitBN %}" class="tlink">{{ battery.obitBN }}</a></td>
+          <td><a>{{ battery.modBat_id }}</a></td>
+          <td><a>{{ battery.state_id }}</a></td>
+          <td><a>{{ battery.dateB|date:"d.m.o H:i" }}</a></td>
+          <td><a>{{ battery.commentB }}</a></td>
+        </tr>
+
+        {% endfor %}
+</table>
+{% else %}
+    <p>No books matched your search query.</p>
+{% endif %}
+
+</div>
+{% endblock %}
+
