@@ -29,7 +29,7 @@ class Battery(models.Model):
 	obitBN = models.CharField(max_length=20,primary_key=True,null=False)
 	state = models.ForeignKey(State,related_name="+",to_field="stateUB", on_delete=models.SET_NULL,null=True)
 	dateB = models.DateTimeField(default=timezone.now)
-	commentB = models.CharField(max_length=50,blank=False)
+	commentB = models.CharField(max_length=50,blank=True)
 	
 	def __str__(self):
 		return self.obitBN
@@ -47,7 +47,7 @@ class UPSB(models.Model):
 	state = models.ForeignKey(State, related_name="+", to_field="stateUB", on_delete=models.SET_NULL,null=True)
 	released = models.BooleanField(default=False)
 	dateU = models.DateTimeField(default=timezone.now)
-	commentU = models.CharField(max_length=100,blank=False)
+	commentU = models.CharField(max_length=100,blank=True)
 	
 	def __str__(self):
                 return self.obitN

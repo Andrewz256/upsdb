@@ -25,7 +25,7 @@ SECRET_KEY = 'h=%%z%tpye(bc3^gc7%*ujpjyp3@a)s$kpba(inu83+a6))rl8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.4.228']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -106,15 +106,15 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
 
-DATETIME_FORMAT = '%d/%m/%y %H:%M'
+DATETIME_FORMAT = '%d.%m.%y'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/

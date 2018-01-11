@@ -46,7 +46,7 @@ def get_ups_list(request):
        if not q:
           error.append('Enter something in search query,  dumb.')
        else:
-          lookups = Q(obitN__icontains=q)| Q(obitInsBat1__obitBN__icontains=q)| Q(obitInsBat2__obitBN__icontains=q)| Q(obitOutBat1__obitBN__icontains=q)| Q(obitOutBat2__obitBN__icontains=q)
+          lookups = Q(obitN__icontains=q)| Q(obitInsBat1__obitBN__icontains=q)| Q(obitInsBat2__obitBN__icontains=q)| Q(obitOutBat1__obitBN__icontains=q)| Q(obitOutBat2__obitBN__icontains=q)| Q(dateU__date=q)
           search_ups_list = UPSB.objects.filter(lookups).distinct()
           return render_to_response('ups/search.html', {'search_ups_list' : search_ups_list, 'query': q})
     return render_to_response('ups/index.html', {'error': error})
@@ -58,7 +58,7 @@ def get_battery_list(request):
        if not q:
           error.append('Enter something in search query,  dumb.')
        else:
-          lookups = Q(obitBN__icontains=q)
+          lookups = Q(obitBN__icontains=q)| Q(dateB__date=q)
           search_battery_list = Battery.objects.filter(lookups).distinct()
           return render_to_response('ups/searchb.html', {'search_battery_list' : search_battery_list, 'query': q})
     return render(request, 'ups/battery.html', {'error': error})
