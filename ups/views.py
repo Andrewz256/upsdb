@@ -41,10 +41,18 @@ def batnew(request):
 
 def get_ups_list(request):
     error = []
-    if 'q' in request.GET:
+    if 'q' and 'r' in request.GET:
        q = request.GET['q']
-       if not q:
+       r = request.GET['r']
+       if r=="ALL" and not q:
           error.append('Enter something in search query,  dumb.')
+       elif r=="False" and not q:
+          search_ups_list = UPSB.objects.filter(Q(released=False))
+          return render_to_response('ups/search.html', {'search_ups_list' : search_ups_list})
+       elif r=="False" and q:
+          lookups = Q(obitN__icontains=q)| Q(obitInsBat1__obitBN__icontains=q)| Q(obitInsBat2__obitBN__icontains=q)| Q(obitOutBat1__obitBN__icontains=q)| Q(obitOutBat2__obitBN__icontains=q)| Q(dateU__icontains=q)& Q(released=False)
+          search_ups_list = UPSB.objects.filter(lookups).distinct()
+          return render_to_response('ups/search.html', {'search_ups_list' : search_ups_list, 'query': q})
        else:
           lookups = Q(obitN__icontains=q)| Q(obitInsBat1__obitBN__icontains=q)| Q(obitInsBat2__obitBN__icontains=q)| Q(obitOutBat1__obitBN__icontains=q)| Q(obitOutBat2__obitBN__icontains=q)| Q(dateU__icontains=q)
           search_ups_list = UPSB.objects.filter(lookups).distinct()
@@ -53,6 +61,7 @@ def get_ups_list(request):
 
 def get_battery_list(request):
     error = []
+    
     if 'q' in request.GET:
        q = request.GET['q']
        if not q:

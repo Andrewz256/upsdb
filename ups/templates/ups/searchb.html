@@ -25,7 +25,7 @@
           <td><a href="{% url 'ups:bat_edit' id_s=battery.obitBN %}" class="tlink">{{ battery.obitBN }}</a></td>
           <td><a>{{ battery.modBat_id }}</a></td>
           <td><a>{{ battery.state_id }}</a></td>
-          <td><a>{{ battery.dateB|date:"d.m.o H:i" }}</a></td>
+          <td><a>{{ battery.dateB|date:"Y-m-d H:i" }}</a></td>
           <td><a>{{ battery.commentB }}</a></td>
         </tr>
 

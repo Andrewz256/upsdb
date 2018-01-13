@@ -5,8 +5,10 @@
 <div class="tablediv">
     <div class="searchdiv">
     <form action="/search" method="get">
-        <input type="text" name="q">
-        <input type="submit" value="Search">
+        <input type="radio" name="r" value=False>Not in stock
+	<input type="radio" name="r" value=ALL checked style="display: none">
+	<input type="text" name="q">
+	<input type="submit" value="Search">
     </form>
     </div>
     <div class="adddiv">
