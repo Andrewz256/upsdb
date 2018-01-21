@@ -22,17 +22,17 @@
 {% if UPS_battery_list %}
 <table>
 	<tr>
-	  <th>edits</th>
-	  <th>OBIT##</th>
-	  <th>model</th>
-	  <th>removeBAT_1</th>
-	  <th>removeBAT_2</th>
-	  <th>insertBAT_1</th>
-	  <th>insertBAT_2</th>
-	  <th>R</th>
-	  <th>state</th>
-	  <th>date</th>
-	  <th>Comment</th>
+	  <th>edit</th>
+          <th>OBIT##</th>
+          <th>model</th>
+          <th>removeBAT_1</th>
+          <th>removeBAT_2</th>
+          <th>insertBAT_1</th>
+          <th>insertBAT_2</th>
+          <!-- <th>R</th> -->
+          <th>state</th>
+          <th>date</th>
+          <th>Comment</th>
 	</tr>
 	{% for ups in UPS_battery_list  %}
  	<tr>
@@ -44,7 +44,7 @@
 	  <td><a>{{ ups.obitOutBat2 }}</a></td>
 	  <td><a>{{ ups.obitInsBat1 }}</a></td>
 	  <td><a>{{ ups.obitInsBat2 }}</a></td>
-	  <td><a>{{ ups.released }}</a></td>
+	  <!-- <td><a>{{ ups.released }}</a></td>-->
 	  <td><a>{{ ups.state }}</a></td>
 	  <td><a>{{ ups.dateU|date:"Y-m-d H:i"}}</a></td>
 	  <td><a>{{ ups.commentU }}</a></td>

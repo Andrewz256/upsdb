@@ -6,12 +6,12 @@ from .forms import PostBat, PostUPS
 from django.db.models import Q
 
 def index(request):
-    UPS_battery_list = UPSB.objects.order_by('-dateU')
+    UPS_battery_list = UPSB.objects.order_by('-dateU')[:30]
     context1 = {'UPS_battery_list': UPS_battery_list}
     return render(request, 'ups/index.html', context1)
 
 def batteries(request):
-    Battery_list = Battery.objects.order_by('obitBN')
+    Battery_list = Battery.objects.order_by('-dateB')[:50]
     context2 = {'Battery_list': Battery_list}
     return render(request, 'ups/battery.html', context2)
 
@@ -28,13 +28,15 @@ def upsnew(request):
     return render(request, 'ups/ups_edit.html', {'Form_ups': Form_ups}) 
 
 def batnew(request):
+    
+    back_to_page = request.GET.get('next', '/battery')
     if request.method == "POST":
         Form_bat = PostBat(request.POST)
         if Form_bat.is_valid():
            bat = Form_bat.save(commit=False)
            bat.dateB = timezone.now()
            bat.save()
-           return redirect('/battery')
+           return redirect(back_to_page)
     else:
        Form_bat = PostBat()
     return render(request, 'ups/bat_edit.html', {'Form_bat': Form_bat})
@@ -107,5 +109,5 @@ def ups_remove(request, id_s):
 def bat_remove(request, id_s):
     bat = get_object_or_404 (Battery, obitBN=id_s)
     bat.delete()
-    return redirect('/battery')
+    return redirect('battery/')
 

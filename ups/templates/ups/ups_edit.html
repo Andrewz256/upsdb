@@ -1,8 +1,19 @@
+{% load staticfiles %}
+<head>
+    <link rel="stylesheet" href="{% static 'ups/css/base.css' %}">
+</head>
+<body>
+<div class="adddiv">
+
+
+<a href="{%url 'ups:batnew' %}?next={{ request.path }}" style="text-decoration: none"><input type="submit" value="add new battery"></a>
+
+
 <form method="POST" >{% csrf_token %}
 	{{ Form_ups.as_p }}
-	<button type="submit">Save</button>
-
+	<input type="submit" value="Save">
+	
 </form>
+</div>
 
-
-
+<body>

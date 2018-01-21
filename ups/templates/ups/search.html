@@ -14,6 +14,7 @@
     <p>Found {{ search_ups_list|length }} UPS{{ search_ups_list|pluralize }}.</p>
     <table>
         <tr>
+	  <th>edit</th>
           <th>OBIT##</th>
           <th>model</th>
           <th>removeBAT_1</th>
@@ -27,8 +28,10 @@
         </tr>
         {% for ups in search_ups_list  %}
         <tr>
-          <td><a href="{% url 'ups:ups_edit' id_s=ups.id %}" class="tlink">{{ ups.obitN }}</a></td>
-          <td><a>{{ ups.modUps_id }}</a></td>
+          <td><a href="{% url 'ups:ups_edit' id_s=ups.id %}" class="tlink">e</a>,
+              <a href="{% url 'ups:ups_remove' id_s=ups.id %}" onclick="return confirm('Delete {{ ups.obitN }}?')" class="tlink">d</a></td>
+          <td><a>{{ ups.obitN }}</a></td>
+	  <td><a>{{ ups.modUps_id }}</a></td>
           <td><a>{{ ups.obitOutBat1 }}</a></td>
           <td><a>{{ ups.obitOutBat2 }}</a></td>
           <td><a>{{ ups.obitInsBat1 }}</a></td>

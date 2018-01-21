@@ -1,7 +1,19 @@
+
+{% load staticfiles %}
+<head>
+    <link rel="stylesheet" href="{% static 'ups/css/base.css' %}">
+</head>
+<body>
+<div class="adddiv">
+
+
 <form method="POST" >{% csrf_token %}
 	{{ Form_bat.as_p }}
-	<button type="submit">Save</button>
+	<input type="hidden" name="next" value="{{ request.GET.next }}">
+        <input type="submit" value="Save">
+	
 </form>
-
+</div>
+</body>
 
 

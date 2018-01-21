@@ -13,12 +13,29 @@ class PostUPS(forms.ModelForm):
 	        'obitOutBat2': forms.TextInput(),
 	        'commentU': forms.Textarea(),
 	    }
+	    labels = {
+	      'obitInsBat1': "Insert_Battery_1", 
+	      'obitInsBat2': "Insert_Battery_2",
+	      'obitOutBat1': "Remove_Battery_1",
+	      'obitOutBat2': "Remove_Battery_1",
+	      'obitN': "Obit ##",
+	      'modUps': "Model",
+	      'released': "in stock?",
+	      'commentU': "Comment",
+	      'dateU': "Date", 
+	    }
 class PostBat(forms.ModelForm):
 	class Meta:
 	    model = Battery
-	    fields = ('obitBN', 'modBat', 'state', 'commentB',)
+	    fields = ('dateB','obitBN', 'modBat', 'state', 'commentB',)
 	    widgets = {
 	       'commentB': forms.Textarea(),
+	    }
+	    labels = {
+	       'commentB': "Comment",
+	       'dateB': "Date",
+	       'obitBN': "Obit ##",
+	       'modBat': "Model",
 	    }
 
 

@@ -13,6 +13,7 @@
     <p>Found {{ search_battery_list|length }} Battery{{ search_battery_list|pluralize }}.</p>
     <table>
         <tr>
+	  <th>edit</th>
           <th>OBIT##</th>
           <th>model</th>
           <th>state</th>
@@ -22,7 +23,9 @@
 
         {% for battery in search_battery_list  %}
         <tr>
-          <td><a href="{% url 'ups:bat_edit' id_s=battery.obitBN %}" class="tlink">{{ battery.obitBN }}</a></td>
+	  <td><a href="{% url 'ups:bat_edit' id_s=battery.obitBN %}" class="tlink">e</a>,
+              <a href="{% url 'ups:bat_remove' id_s=battery.obitBN %}" onclick="return confirm('Delete {{ battery.obitBN }}?')" class="tlink">d</a></td>
+          <td>{{ battery.obitBN }}</a></td>
           <td><a>{{ battery.modBat_id }}</a></td>
           <td><a>{{ battery.state_id }}</a></td>
           <td><a>{{ battery.dateB|date:"Y-m-d H:i" }}</a></td>
