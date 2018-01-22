@@ -7,10 +7,10 @@ class PostUPS(forms.ModelForm):
 	    model = UPSB
 	    fields = ('modUps', 'dateU', 'obitN', 'state', 'obitInsBat1', 'obitInsBat2', 'obitOutBat1', 'obitOutBat2','released',  'commentU',)
 	    widgets = {
-	        'obitInsBat1': forms.TextInput(),
-	        'obitInsBat2': forms.TextInput(),
-	        'obitOutBat1': forms.TextInput(),
-	        'obitOutBat2': forms.TextInput(),
+	        # 'obitInsBat1': forms.TextInput(),
+	        # 'obitInsBat2': forms.TextInput(),
+	        # 'obitOutBat1': forms.TextInput(),
+	        # 'obitOutBat2': forms.TextInput(),
 	        'commentU': forms.Textarea(),
 	    }
 	    labels = {
