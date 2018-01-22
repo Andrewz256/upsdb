@@ -109,5 +109,5 @@ def ups_remove(request, id_s):
 def bat_remove(request, id_s):
     bat = get_object_or_404 (Battery, obitBN=id_s)
     bat.delete()
-    return redirect('battery/')
+    return redirect('/battery')
 
